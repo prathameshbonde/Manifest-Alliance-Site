@@ -353,7 +353,8 @@
           <div class="field"><label for="j-power">Total power</label><input id="j-power" name="power" required inputmode="decimal" placeholder="e.g. 48.5M"></div>
           <div class="field"><label for="j-coords">City coordinates</label><input id="j-coords" name="coords" required placeholder="X: 512  Y: 640"><span class="hint">So we can find your castle and message you.</span></div>
           <div class="field"><label for="j-discord">Discord username <em>(optional)</em></label><input id="j-discord" name="discord"></div>
-          <button class="btn btn-ticket" type="submit">Print my ticket</button>
+          <div class="trap" aria-hidden="true"><label for="j-website">Leave this empty</label><input id="j-website" name="website" tabindex="-1" autocomplete="off"></div>
+          <button class="btn btn-ticket" type="submit">Send my application</button>
           <p class="form-msg" id="form-msg" role="status"></p>
         </form>
 

@@ -221,6 +221,7 @@
 
   /* ---------- join form → ticket ---------- */
   var form = $("#join-form"), msg = $("#form-msg"), ticket = $("#ticket"), ticketText = $("#ticket-text");
+  var submitBtn = $("button[type='submit']", form), lastSent = null;
   var draft = store("manifest-join") || {};
   $$("input", form).forEach(function (i) {
     if (draft[i.name]) i.value = draft[i.name];
@@ -246,16 +247,34 @@
       "Coordinates: " + f.coords
     ];
     if (f.discord) lines.push("Discord: " + f.discord);
-    ticketText.textContent = lines.join("\n");
+    var text = lines.join("\n");
+    ticketText.textContent = text;
     ticket.hidden = false;
-    msg.textContent = "Ticket printed. Copy it and post it in our Discord.";
-
-    if (C.formEndpoint) {
-      fetch(C.formEndpoint, { method: "POST", headers: { "Accept": "application/json", "Content-Type": "application/json" }, body: JSON.stringify(f) })
-        .then(function (r) { msg.textContent = r.ok ? "Ticket printed and sent to our recruiters. Posting it in Discord gets you a faster reply." : msg.textContent; })
-        .catch(function () {});
-    }
     ticket.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+    if (!C.formEndpoint) {
+      msg.textContent = "Ticket printed. Copy it and post it in our Discord.";
+      return;
+    }
+    if (text === lastSent) {
+      msg.textContent = "This application was already sent to our recruiters.";
+      return;
+    }
+    submitBtn.disabled = true;
+    msg.textContent = "Sending your application to our recruiters…";
+    fetch(C.formEndpoint, { method: "POST", headers: { "Accept": "application/json", "Content-Type": "application/json" }, body: JSON.stringify(f) })
+      .then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (j) {
+          if (!r.ok || !j.ok) throw new Error(j.error || "");
+          lastSent = text;
+          msg.textContent = "Application sent! Our recruiters will reach out in game or on Discord. Joining our Discord gets you a faster reply.";
+        });
+      })
+      .catch(function () {
+        msg.textContent = "We couldn't send it automatically. Copy your ticket below and post it in our Discord instead.";
+        msg.classList.add("is-error");
+      })
+      .then(function () { submitBtn.disabled = false; });
   });
   $("#copy-ticket").addEventListener("click", function () {
     var btn = this, text = ticketText.textContent;

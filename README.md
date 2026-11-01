@@ -23,7 +23,6 @@ Plain HTML, CSS and JavaScript. No build step.
 ## Placeholders still to fill
 
 - `powerCap` + `powerCapIsPlaceholder`: real cap for the next event
-- `formEndpoint` (optional): Formspree endpoint if applications should also be emailed
 
 ## Running locally
 
@@ -33,3 +32,23 @@ Open `index.html` in a browser. That's it.
 
 Hosted on Cloudflare Pages, connected to this GitHub repo:
 build command empty, output directory `/`. Every commit to `main` redeploys.
+
+## Join applications → Discord
+
+The join form posts to `/api/apply` (a Vercel function in `api/apply.js`), which
+posts each application into the private Discord applications channel.
+
+The Discord webhook link is a secret and must **never** be committed to this repo.
+Set it in Vercel: **Project → Settings → Environment Variables**
+
+| Name | Value |
+|---|---|
+| `DISCORD_WEBHOOK_URL` | the webhook link from Discord (channel settings → Integrations → Webhooks) |
+| `DISCORD_PING_ROLE_ID` | optional: a role ID to ping on each application |
+
+After adding or changing a variable, redeploy (Deployments → ⋯ → Redeploy).
+If the webhook link ever leaks, delete it in Discord, create a new one, and update the variable.
+
+Built-in protection: hidden spam-trap field, 3 applications per connection per 10 minutes,
+and no @everyone/@here pings from applicant text.
+

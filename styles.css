@@ -453,3 +453,8 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   .marquee::after, .ticker-track, .cleared-stamp { animation: none; }
   .meter-fill, .progress-fill { transition: none; }
 }
+
+/* spam trap field: hidden from people, visible to bots */
+.trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.join-form { position: relative; }
+.btn:disabled { opacity: 0.6; cursor: progress; }

@@ -48,8 +48,8 @@ window.MANIFEST_CONFIG = {
     { name: "Caesar Boss", times: [{ utc: "20:00" }] }
   ],
 
-  // Optional: a form service URL (for example a Formspree endpoint like
-  // "https://formspree.io/f/abcdwxyz") so applications are emailed to you.
-  // Leave "" and applicants copy their ticket into Discord instead.
-  formEndpoint: ""
+  // Where join applications are sent. "/api/apply" posts them to the private
+  // Discord applications channel (needs DISCORD_WEBHOOK_URL set in Vercel).
+  // Set to "" to turn auto-sending off; applicants then copy their ticket.
+  formEndpoint: "/api/apply"
 };
