@@ -38,6 +38,16 @@ window.MANIFEST_CONFIG = {
     { role: "Recruiter", name: "Badshah" }
   ],
 
+  // Alliance event times, in UTC, 24-hour "HH:MM".
+  // Each event can have one or more times. Add a label to a time if needed.
+  // The site sorts them and shows each visitor their own local time too.
+  events: [
+    { name: "Vikings", times: [{ utc: "13:00" }] },
+    { name: "Swordland / Tri-Clash", times: [{ utc: "14:00" }, { utc: "19:00" }] },
+    { name: "Trap", times: [{ label: "Trap 1", utc: "14:00" }, { label: "Trap 2", utc: "19:30" }] },
+    { name: "Caesar Boss", times: [{ utc: "20:00" }] }
+  ],
+
   // Optional: a form service URL (for example a Formspree endpoint like
   // "https://formspree.io/f/abcdwxyz") so applications are emailed to you.
   // Leave "" and applicants copy their ticket into Discord instead.

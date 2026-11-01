@@ -21,6 +21,7 @@
   <div class="topbar-inner">
     <a class="brand" href="#top"><span class="br">[</span>MAN<span class="br">]</span>ifest</a>
     <nav class="nav" aria-label="Sections">
+      <a href="#showtimes">Showtimes</a>
       <a href="#power">Power Check</a>
       <a href="#checklist">Checklist</a>
       <a href="#rules">House Rules</a>
@@ -82,6 +83,26 @@
           <li><strong>Decide if our focus fits yours.</strong> Bring an alt, look around, then lock it in.</li>
         </ul>
         <p class="sign">Zero pressure. Full [MAN]ifestation potential. Come be a part of the movement. ♡</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SHOWTIMES ============ -->
+  <section class="showtimes band" id="showtimes">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Daily programme</p>
+        <h2>Showtimes</h2>
+        <p>When the alliance gathers for events. Times are set in UTC, the game's server time. Your local time is shown under each one so you know when to log in.</p>
+      </div>
+
+      <div class="board">
+        <div class="board-clock" aria-live="off">
+          <span>Server time now <b id="clock-utc">--:--</b> UTC</span>
+          <span>Your time <b id="clock-local">--:--</b> <i id="clock-zone"></i></span>
+        </div>
+        <ul class="board-list" id="board-list"></ul>
+        <p class="board-foot">Event days are announced in our Discord. Show up a few minutes early to join rallies.</p>
       </div>
     </div>
   </section>

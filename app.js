@@ -35,6 +35,69 @@
     });
   }
 
+  /* ---------- showtimes ---------- */
+  var boardList = $("#board-list");
+  var localFmt = function (date) {
+    try { return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }); }
+    catch (e) { return pad(date.getHours()) + ":" + pad(date.getMinutes()); }
+  };
+  var zoneName = (function () {
+    try {
+      var part = new Intl.DateTimeFormat([], { timeZoneName: "short" }).formatToParts(new Date())
+        .filter(function (p) { return p.type === "timeZoneName"; })[0];
+      return part ? part.value : "";
+    } catch (e) { return ""; }
+  })();
+  function parseUtc(hhmm) {
+    var m = /^(\d{1,2}):(\d{2})$/.exec(String(hhmm).trim());
+    return m ? { h: +m[1], m: +m[2] } : null;
+  }
+  if (boardList && Array.isArray(C.events)) {
+    var today = new Date();
+    var events = C.events.map(function (ev) {
+      var times = (ev.times || []).map(function (t) { return typeof t === "string" ? { utc: t } : t; })
+        .filter(function (t) { return parseUtc(t.utc); })
+        .sort(function (a, b) { return a.utc.localeCompare(b.utc); });
+      return { name: ev.name, times: times };
+    }).filter(function (ev) { return ev.times.length; });
+    events.sort(function (a, b) { return a.times[0].utc.localeCompare(b.times[0].utc); });
+
+    events.forEach(function (ev) {
+      var li = document.createElement("li"); li.className = "board-row";
+      var name = document.createElement("span"); name.className = "board-name"; name.textContent = ev.name;
+      var wrap = document.createElement("div"); wrap.className = "board-times";
+      ev.times.forEach(function (t) {
+        var p = parseUtc(t.utc);
+        var at = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), p.h, p.m));
+        // Does this UTC time fall on a different calendar day locally?
+        var utcDay = Date.UTC(at.getUTCFullYear(), at.getUTCMonth(), at.getUTCDate());
+        var localDay = Date.UTC(at.getFullYear(), at.getMonth(), at.getDate());
+        var shift = Math.round((localDay - utcDay) / 864e5);
+        var chip = document.createElement("div"); chip.className = "showing";
+        if (t.label) {
+          var lab = document.createElement("span"); lab.className = "showing-label"; lab.textContent = t.label;
+          chip.appendChild(lab);
+        }
+        var utc = document.createElement("span"); utc.className = "showing-utc";
+        utc.textContent = pad(p.h) + ":" + pad(p.m);
+        var small = document.createElement("small"); small.textContent = "UTC"; utc.appendChild(small);
+        var loc = document.createElement("span"); loc.className = "showing-local";
+        loc.textContent = "You: " + localFmt(at) + (shift > 0 ? " (next day)" : shift < 0 ? " (day before)" : "");
+        chip.appendChild(utc); chip.appendChild(loc);
+        wrap.appendChild(chip);
+      });
+      li.appendChild(name); li.appendChild(wrap);
+      boardList.appendChild(li);
+    });
+  }
+  var clockUtc = $("#clock-utc"), clockLocal = $("#clock-local"), clockZone = $("#clock-zone");
+  if (clockZone) clockZone.textContent = zoneName;
+  function clock() {
+    var n = new Date();
+    if (clockUtc) clockUtc.textContent = pad(n.getUTCHours()) + ":" + pad(n.getUTCMinutes());
+    if (clockLocal) clockLocal.textContent = localFmt(n);
+  }
+
   /* ---------- power helpers ---------- */
   // Accepts "48,500,000", "48 500 000", "48.5M", "950k", "1.2B"
   function parsePower(str) {
@@ -143,6 +206,7 @@
     return t > now ? t : t + 864e5;
   }
   function tick() {
+    clock();
     var now = Date.now(), target, label;
     if (snapshot > now) { target = snapshot; label = "Transfer snapshot locks in"; }
     else { target = nextReset(now); label = "Next daily reset in"; }
