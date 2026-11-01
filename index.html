@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>[MAN]ifest Alliance</title>
+<meta name="description" content="[MAN]ifest is a Kingshot alliance in Kingdom 1526. Transfer guide, power check, and how to join.">
+<meta property="og:title" content="[MAN]ifesting the Future? Now showing in Kingdom 1526">
+<meta property="og:description" content="Transfer guide, power check, and your ticket into the [MAN]ifest alliance.">
+<meta property="og:image" content="assets/poster.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#14182a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Special+Elite&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#top"><span class="br">[</span>MAN<span class="br">]</span>ifest</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#power">Power Check</a>
+      <a href="#checklist">Checklist</a>
+      <a href="#rules">House Rules</a>
+      <a href="#guide">Transfer 101</a>
+      <a href="#join" class="nav-cta">Get a Ticket</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ NOW SHOWING ============ -->
+  <section class="hero band">
+    <div class="wrap">
+      <div class="marquee">
+        <div class="marquee-inner">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="star">★</span> Now showing in Kingdom <span data-cfg="kingdom">1526</span> <span class="star">★</span></p>
+            <h1><span class="br">[</span>MAN<span class="br">]</span>ifesting the Future?</h1>
+            <p class="lede">Make an alt with us on <strong>[MAN]ifest server <span data-cfg="kingdom">1526</span></strong> and come [MAN]ifest the vibes before you lock it in.</p>
+            <div class="cta-row">
+              <a class="btn btn-ticket" href="#join">Get your ticket</a>
+              <a class="btn btn-ghost" data-cfg-href="discordInvite" href="#" target="_blank" rel="noopener">Join our Discord</a>
+            </div>
+            <div class="countdown" aria-live="polite">
+              <span class="countdown-label" id="countdown-label">Next daily reset in</span>
+              <span class="countdown-time" id="countdown-time">--:--:--</span>
+            </div>
+          </div>
+          <figure class="featuring">
+            <figcaption>★ Featuring ★</figcaption>
+            <img src="assets/man-logo.jpg" alt="[MAN] alliance emblem" width="548" height="504">
+            <p>Collective [MAN]ifestation</p>
+          </figure>
+        </div>
+      </div>
+    </div>
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>Active members</span><span>Global community</span><span>Join [MAN]ifest Alliance</span><span>Powerful minds. Bigger manifestations.</span>
+        <span>Active members</span><span>Global community</span><span>Join [MAN]ifest Alliance</span><span>Powerful minds. Bigger manifestations.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURING / ABOUT ============ -->
+  <section class="about band" id="about">
+    <div class="wrap about-grid">
+      <div class="stamp-wrap">
+        <div class="stamp"><img src="assets/cat-stamp.jpg" alt="Vintage postage stamp of a black cat, the [MAN]ifest mascot" width="488" height="568"></div>
+        <span class="admit">Admit<br>All</span>
+      </div>
+      <div class="paper card-about">
+        <h2>Come see how we [MAN]ifest</h2>
+        <ul class="stars">
+          <li><strong>Connect with the vision.</strong> Meet the people behind [MAN]ifest and what we're building in Kingdom <span data-cfg="kingdom">1526</span>.</li>
+          <li><strong>See how we activate.</strong> Rallies, events and alliance goals, run together and on time.</li>
+          <li><strong>[MAN]ifest shared goals.</strong> We grow as one alliance, so everyone's power counts.</li>
+          <li><strong>Decide if our focus fits yours.</strong> Bring an alt, look around, then lock it in.</li>
+        </ul>
+        <p class="sign">Zero pressure. Full [MAN]ifestation potential. Come be a part of the movement. ♡</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ POWER CHECK ============ -->
+  <section class="power band" id="power">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Box office</p>
+        <h2>Power Check</h2>
+        <p>To transfer in, your <strong>total power</strong> must be under Kingdom <span data-cfg="kingdom">1526</span>'s power cap when the snapshot locks. Enter your total power from your profile to see where you stand.</p>
+      </div>
+
+      <div class="paper power-card">
+        <form class="power-form" id="power-form" novalidate>
+          <div class="field">
+            <label for="power-input">Your total power</label>
+            <input id="power-input" name="power" inputmode="decimal" autocomplete="off" placeholder="e.g. 48,500,000 or 48.5M" value="48.5M">
+            <span class="hint">Example value shown. Replace it with your own. You can type 48.5M or 48,500,000.</span>
+          </div>
+          <div class="field">
+            <label for="cap-input">Kingdom <span data-cfg="kingdom">1526</span> power cap</label>
+            <input id="cap-input" name="cap" inputmode="decimal" autocomplete="off">
+            <span class="hint" id="cap-hint">Filled in from the current event.</span>
+          </div>
+        </form>
+
+        <div class="power-result" id="power-result" data-state="over">
+          <div class="meter" role="img" id="power-meter-label" aria-label="Power compared with cap">
+            <div class="meter-fill" id="meter-fill"></div>
+            <div class="meter-cap"><span>Cap</span></div>
+          </div>
+          <p class="verdict" id="verdict">You're over the cap.</p>
+          <p class="verdict-sub" id="verdict-sub"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRE-SHOW CHECKLIST ============ -->
+  <section class="checklist band" id="checklist">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The night before</p>
+        <h2>Pre-Show Checklist</h2>
+        <p>Your power snapshot locks at the daily reset when the transfer event begins. Do these steps the night before so you fall under the target kingdom's power cap, or qualify without a special invite. Tick them off as you go; your progress is saved on this device.</p>
+      </div>
+
+      <div class="progress-row">
+        <div class="progress" aria-hidden="true"><div class="progress-fill" id="progress-fill"></div></div>
+        <span class="progress-text" id="progress-text">0 of 0 done</span>
+        <button class="btn-text" type="button" id="reset-checklist">Clear ticks</button>
+      </div>
+
+      <div class="reel">
+        <h3 class="reel-title"><span>Reel 1</span> Drop your power</h3>
+        <ol class="steps">
+          <li class="step">
+            <input type="checkbox" id="c-infirmary" data-check>
+            <label for="c-infirmary">
+              <span class="step-title">Empty your Infirmary and Enlistment Office</span>
+              <span class="step-body">Clear both out completely. Wounded or enlisting troops waiting inside will block your transfer once the window opens.</span>
+            </label>
+          </li>
+          <li class="step">
+            <input type="checkbox" id="c-heroes" data-check>
+            <label for="c-heroes">
+              <span class="step-title">Reset your top 5 heroes in the Drill Camp</span>
+              <span class="step-body">Go to the Drill Camp and reset your top five heroes back to level 1. All their Hero XP is refunded to your inventory. This removes millions of power for now, and you lose no permanent progress.</span>
+            </label>
+          </li>
+          <li class="step">
+            <input type="checkbox" id="c-gear" data-check>
+            <label for="c-gear">
+              <span class="step-title">Unequip all hero gear</span>
+              <span class="step-body">Strip all gear off your heroes. Players disagree on whether this lowers the final ticket cost, since the game still tracks your inventory, but doing it right before the snapshot is highly recommended to get your visible power under the target kingdom's hard cap.</span>
+            </label>
+          </li>
+          <li class="step">
+            <input type="checkbox" id="c-drill" data-check>
+            <label for="c-drill">
+              <span class="step-title">Empty your Drill Camp slots</span>
+              <span class="step-body">Remove any extra heroes sitting in the passive slots of your Drill Camp. Leaving them there keeps your power higher than it needs to be.</span>
+            </label>
+          </li>
+          <li class="step">
+            <input type="checkbox" id="c-troops" data-check>
+            <label for="c-troops">
+              <span class="step-title">Dismiss low-tier troops <em>(only if needed)</em></span>
+              <span class="step-body">If resetting heroes and gear still doesn't get you under the cap, sacrifice some troop power. Go to <b>Profile &rsaquo; Troops</b>, tap lower-tier troops you don't mind losing (T1–T8 filler troops), and use <b>Dismiss</b>. This deletes them permanently.</span>
+              <span class="step-note">You don't need to attack anyone or send troops to the hospital to lower power. Dismissing from the profile menu is safer and cleaner.</span>
+            </label>
+          </li>
+        </ol>
+      </div>
+
+      <div class="reel">
+        <h3 class="reel-title"><span>Reel 2</span> Burn or protect your resources</h3>
+        <ol class="steps">
+          <li class="step">
+            <input type="checkbox" id="c-rss" data-check>
+            <label for="c-rss">
+              <span class="step-title">Spend or protect unprotected wood, meat, coal and iron</span>
+              <span class="step-body">You can only bring a limited amount of open resources. Anything above your <b>Storehouse protection limit</b> is lost for good during the jump. Resources still in your bag (item inventory) are 100% safe.</span>
+              <span class="step-body">Spend the excess on instant building upgrades, donate it to alliance members who are staying behind, or let friends hit your city so it doesn't go to waste.</span>
+            </label>
+          </li>
+        </ol>
+      </div>
+
+      <div class="reel">
+        <h3 class="reel-title"><span>Reel 3</span> Final checks before you jump</h3>
+        <ol class="steps">
+          <li class="step">
+            <input type="checkbox" id="c-cap" data-check>
+            <label for="c-cap">
+              <span class="step-title">Your total power is under Kingdom <span data-cfg="kingdom">1526</span>'s cap</span>
+              <span class="step-body">Check it with the <a href="#power">Power Check</a> above.</span>
+            </label>
+          </li>
+          <li class="step">
+            <input type="checkbox" id="c-passes" data-check>
+            <label for="c-passes">
+              <span class="step-title">You have enough Transfer Passes</span>
+              <span class="step-body">Between 1 and 50, depending on your Transfer Score. The in-game transfer screen shows your exact cost.</span>
+            </label>
+          </li>
+          <li class="step">
+            <input type="checkbox" id="c-alliance" data-check>
+            <label for="c-alliance">
+              <span class="step-title">You have left your current alliance</span>
+              <span class="step-body">You can't transfer while you're in an alliance.</span>
+            </label>
+          </li>
+          <li class="step">
+            <input type="checkbox" id="c-slots" data-check>
+            <label for="c-slots">
+              <span class="step-title">The transfer event is active and Kingdom <span data-cfg="kingdom">1526</span> has open slots</span>
+              <span class="step-body">Ask in our Discord if you're not sure.</span>
+            </label>
+          </li>
+        </ol>
+      </div>
+
+      <div class="cleared" id="cleared" hidden>
+        <span class="cleared-stamp">Cleared for transfer</span>
+        <p>Every step is ticked. See you in Kingdom <span data-cfg="kingdom">1526</span>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOUSE RULES ============ -->
+  <section class="rules band" id="rules">
+    <div class="wrap">
+      <div class="rules-sign">
+        <p class="eyebrow">House rules</p>
+        <h2>Not before the show</h2>
+        <p class="rules-lede">Don't apply upgrades before the snapshot. Applying them right before the event adds permanent power you can't reset.</p>
+        <ul class="banned">
+          <li><span class="x" aria-hidden="true">✕</span>Governor Gear upgrades</li>
+          <li><span class="x" aria-hidden="true">✕</span>Charm upgrades</li>
+          <li><span class="x" aria-hidden="true">✕</span>Pet items</li>
+        </ul>
+        <p class="rules-foot">Leave them in your backpack. Save them to unleash in your new kingdom during the next <strong>Kingdom of Power</strong> event.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ POST-CREDITS ============ -->
+  <section class="credits band" id="after">
+    <div class="wrap credits-inner">
+      <p class="eyebrow">Post-credits scene</p>
+      <h2>Once you land</h2>
+      <p>When you're safely in your new kingdom, you get it all back right away:</p>
+      <ul class="credit-roll">
+        <li>Re-apply your saved Hero XP</li>
+        <li>Re-equip your hero gear</li>
+        <li>Put heroes back in your Drill Camp slots</li>
+        <li>Return to your full power</li>
+      </ul>
+      <p class="credits-note">Then hold your Governor Gear, Charm and Pet upgrades for the next Kingdom of Power event.</p>
+    </div>
+  </section>
+
+  <!-- ============ TRANSFER 101 ============ -->
+  <section class="guide band" id="guide">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Programme notes</p>
+        <h2>Transfer 101</h2>
+        <p>New to kingdom transfers? Here's how it works at a glance.</p>
+      </div>
+      <div class="guide-grid">
+        <article class="paper note">
+          <h3>What are Transfer Passes?</h3>
+          <p>The item you spend to move kingdoms. You need 1 to 50 depending on your Transfer Score. The in-game transfer screen shows your exact cost.</p>
+        </article>
+        <article class="paper note">
+          <h3>Where do I get them?</h3>
+          <p>Claim 1 Transfer Pass a week from the Alliance Shop for 150,000 Alliance Tokens. Limit: 1 per week.</p>
+        </article>
+        <article class="paper note">
+          <h3>How often do transfers open?</h3>
+          <p>During special Kingdom Transfer Events, usually every 6 to 8 weeks.</p>
+        </article>
+        <article class="paper note">
+          <h3>Key requirement</h3>
+          <p>Your total power must be below the target kingdom's power cap when the snapshot locks.</p>
+        </article>
+      </div>
+
+      <div class="paper fares">
+        <h3>Ticket prices <span class="fares-sub">Estimated Transfer Pass cost</span></h3>
+        <table>
+          <thead><tr><th scope="col">Account stage</th><th scope="col">Passes</th></tr></thead>
+          <tbody>
+            <tr><td>Low Transfer Score, early account</td><td>1–5</td></tr>
+            <tr><td>Mid Transfer Score, mid-game account</td><td>10–20</td></tr>
+            <tr><td>High Transfer Score, late-game account</td><td>30–50</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TICKET BOOTH / JOIN ============ -->
+  <section class="join band" id="join">
+    <div class="wrap join-grid">
+      <div class="join-copy">
+        <p class="eyebrow">Ticket booth</p>
+        <h2>We're calling to the right [MAN] power, too.</h2>
+        <p>Fill in your details to print your ticket, then post it in our Discord so a recruiter can find your castle and reach out.</p>
+        <a class="btn btn-ghost" data-cfg-href="discordInvite" href="#" target="_blank" rel="noopener">Open our Discord</a>
+        <div class="crew">
+          <h3>Your hosts</h3>
+          <ul id="leadership"></ul>
+        </div>
+      </div>
+
+      <div class="booth">
+        <form class="paper join-form" id="join-form">
+          <div class="field"><label for="j-name">Governor name</label><input id="j-name" name="governor" required autocomplete="nickname"></div>
+          <div class="field"><label for="j-id">Governor ID</label><input id="j-id" name="governorId" required inputmode="numeric"></div>
+          <div class="field-row">
+            <div class="field"><label for="j-server">Current server</label><input id="j-server" name="server" required inputmode="numeric"></div>
+            <div class="field"><label for="j-tc">Town Center level</label><input id="j-tc" name="townCenter" required inputmode="numeric"></div>
+          </div>
+          <div class="field"><label for="j-power">Total power</label><input id="j-power" name="power" required inputmode="decimal" placeholder="e.g. 48.5M"></div>
+          <div class="field"><label for="j-coords">City coordinates</label><input id="j-coords" name="coords" required placeholder="X: 512  Y: 640"><span class="hint">So we can find your castle and message you.</span></div>
+          <div class="field"><label for="j-discord">Discord username <em>(optional)</em></label><input id="j-discord" name="discord"></div>
+          <button class="btn btn-ticket" type="submit">Print my ticket</button>
+          <p class="form-msg" id="form-msg" role="status"></p>
+        </form>
+
+        <div class="ticket" id="ticket" hidden>
+          <div class="ticket-main">
+            <p class="ticket-head">[MAN]ifest · Kingdom <span data-cfg="kingdom">1526</span></p>
+            <pre class="ticket-text" id="ticket-text"></pre>
+          </div>
+          <div class="ticket-stub"><span>Admit one</span></div>
+          <div class="ticket-actions">
+            <button class="btn btn-ticket" type="button" id="copy-ticket">Copy ticket</button>
+            <a class="btn btn-ghost" data-cfg-href="discordInvite" href="#" target="_blank" rel="noopener">Paste it in Discord</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p class="footer-big">Powerful minds. Bigger manifestations.</p>
+    <p>© 2026 [MAN]ifest Alliance · Forge Friendships, Fuel Fun.</p>
+    <p class="fine">Fan-made alliance site. Not affiliated with Kingshot or its developers. Game mechanics can change; the in-game screens are the final word.</p>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
