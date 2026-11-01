@@ -22,9 +22,7 @@ Plain HTML, CSS and JavaScript. No build step.
 
 ## Placeholders still to fill
 
-- `discordInvite`: real Discord invite link
 - `powerCap` + `powerCapIsPlaceholder`: real cap for the next event
-- `leadership`: R5 / R4 / recruiter names
 - `formEndpoint` (optional): Formspree endpoint if applications should also be emailed
 
 ## Running locally

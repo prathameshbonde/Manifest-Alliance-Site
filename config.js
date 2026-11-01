@@ -10,8 +10,8 @@ window.MANIFEST_CONFIG = {
   // Kingdom (server / state) number we recruit into.
   kingdom: "1526",
 
-  // Discord invite link. PLACEHOLDER: paste the real invite here.
-  discordInvite: "https://discord.gg/YOUR-INVITE-CODE",
+  // Discord invite link.
+  discordInvite: "https://discord.gg/E5yGZFuyKU",
 
   // Target kingdom's total power cap for the current transfer event.
   // Write the full number, no commas: 45 million = 45000000.
@@ -28,12 +28,14 @@ window.MANIFEST_CONFIG = {
   // the countdown then shows the time to the next daily reset.
   transferSnapshotUtc: "",
 
-  // Alliance leadership shown on the Join section. PLACEHOLDERS.
+  // Alliance leadership shown on the Join section.
   leadership: [
-    { role: "R5", name: "[R5 name]" },
-    { role: "R4", name: "[R4 name]" },
-    { role: "R4", name: "[R4 name]" },
-    { role: "Recruiter", name: "[Recruiter name]" }
+    { role: "R5", name: "Buzz" },
+    { role: "R4", name: "Jezuz" },
+    { role: "R4", name: "Badshah" },
+    { role: "R4", name: "Red Reddington" },
+    { role: "R4", name: "Nergal" },
+    { role: "Recruiter", name: "Badshah" }
   ],
 
   // Optional: a form service URL (for example a Formspree endpoint like
